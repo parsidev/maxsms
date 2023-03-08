@@ -26,11 +26,18 @@ class MaxSms
 
     public function JobList()
     {
-        $param = [
+        return $this->callApi([
             "uname" => $this->config['username'],
             "pass" => $this->config['password'],
             "op" => "joblist"
-        ];
-        return $this->callApi($param);
+        ]);
+    }
+
+    public function Credit(){
+        return $this->callApi([
+            "uname" => $this->config['username'],
+            "pass" => $this->config['password'],
+            "op" => "credit"
+        ]);
     }
 }
