@@ -1,0 +1,30 @@
+{
+  "name": "parsidev/maxsms",
+  "description": "Max Sms Library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mohammad Reza",
+      "email": "info@parsidev.ir"
+    }
+  ],
+  "require": {
+    "illuminate/support": ">=v9.0.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Parsidev\\MaxSms": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Parsidev\\MaxSms\\MaxSmsServiceProvider"
+      ],
+      "aliases": {
+        "MaxSms": "Parsidev\\MaxSms\\Facades"
+      }
+    }
+  },
+  "minimum-stability": "dev"
+}
