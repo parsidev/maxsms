@@ -21,7 +21,12 @@ class MaxSms
         $response = curl_exec($handler);
         curl_close($handler);
 
-        return $response;
+        $response = json_decode($response);
+
+        return [
+            "status" => $response[0],
+            "data" => $response[1]
+        ];
     }
 
     public function JobList()
@@ -29,11 +34,12 @@ class MaxSms
         return $this->callApi([
             "uname" => $this->config['username'],
             "pass" => $this->config['password'],
-            "op" => "joblist"
+            "op" => "jobslist"
         ]);
     }
 
-    public function Credit(){
+    public function Credit()
+    {
         return $this->callApi([
             "uname" => $this->config['username'],
             "pass" => $this->config['password'],
