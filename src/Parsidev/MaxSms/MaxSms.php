@@ -46,4 +46,20 @@ class MaxSms
             "op" => "credit"
         ]);
     }
+
+    public function Send($recipients, $message)
+    {
+        if (!is_array($recipients)) {
+            $recipients = [$recipients];
+        }
+
+        return $this->callApi([
+            "uname" => $this->config['username'],
+            "pass" => $this->config['password'],
+            "op" => "send",
+            "to" => json_encode($recipients),
+            "message" => $message,
+            "from" => $this->config['from']
+        ]);
+    }
 }
