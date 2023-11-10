@@ -9,22 +9,13 @@
     }
   ],
   "require": {
-    "illuminate/support": ">=v9.0.0"
+    "ext-curl": "*",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-0": {
       "Parsidev\\MaxSms": "src/"
     }
   },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Parsidev\\MaxSms\\MaxSmsServiceProvider"
-      ],
-      "aliases": {
-        "MaxSms": "Parsidev\\MaxSms\\Facades"
-      }
-    }
-  },
-  "minimum-stability": "dev"
+  "minimum-stability": "stable"
 }
