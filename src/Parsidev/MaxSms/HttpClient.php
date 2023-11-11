@@ -30,7 +30,7 @@ class HttpClient
     /**
      * Supported http response codes
      */
-    private $_supportedStatusCodes = array(200, 201, 204, 400, 403, 404, 405, 422, 500);
+    private $_supportedStatusCodes = [200, 201, 204, 400, 403, 404, 405, 422, 500];
 
     /**
      * Http client constructor
@@ -38,7 +38,7 @@ class HttpClient
      * @param int $timeout request timeout
      * @param array $headers request headers
      */
-    public function __construct($baseURL, $timeout = 30, $headers = array())
+    public function __construct(string $baseURL, int $timeout = 30, array $headers = [])
     {
         $this->_baseURL = $baseURL;
 
@@ -52,10 +52,10 @@ class HttpClient
     /**
      * Make a based url with given uri and query parameters
      * @param string $uri uri
-     * @param array $params query params
+     * @param array|null $params query params
      * @return string
      */
-    public function getBasedURL($uri, $params = null)
+    public function getBasedURL(string $uri, array $params = null): string
     {
         if (!$uri && !$params) {
             throw new InvalidArgumentException("function needs at least one argument");
@@ -78,13 +78,13 @@ class HttpClient
      * @param string $method http method
      * @param string $url request url
      * @param mixed $data request data
-     * @param array $params query parameters
-     * @param array $headers http headers
+     * @param array|null $params query parameters
+     * @param array|null $headers http headers
      * @return Response parsed response
      * @throws Errors\HttpException
      * @throws Errors\Error
      */
-    public function request($method = "GET", $url = "", $data = null, $params = null, $headers = null)
+    public function request(string $method = "GET", string $url = "", $data = null, array $params = null, array $headers = null): Response
     {
         $curl = curl_init();
 
@@ -156,7 +156,7 @@ class HttpClient
      * @throws Errors\HttpException
      * @throws Errors\Error
      */
-    public function get($url, $params = Null, $headers = Null)
+    public function get(string $url, array $params = Null, array $headers = Null): Response
     {
         return $this->request("GET", $url, Null, $params, $headers);
     }
@@ -170,7 +170,7 @@ class HttpClient
      * @throws Errors\HttpException
      * @throws Errors\Error
      */
-    public function post($url, $data, $headers = null)
+    public function post(string $url, $data, array $headers = null): Response
     {
         return $this->request("POST", $url, $data, Null, $headers);
     }
